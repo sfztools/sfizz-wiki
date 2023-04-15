@@ -1,0 +1,37 @@
+INHERIT: docs/common/config.yml
+
+site_description: "sfizz wiki"
+site_name: "sfizz-wiki"
+site_url: "https://sfz.tools/sfizz-wiki"
+
+#copyright: "Copyright &copy; 2019-2023 SFZTools Organization"
+
+repo_name: "GitHub"
+repo_url: "https://github.com/sfztools/sfizz-wiki"
+
+extra:
+  homepage: "/"
+  copyright_auto: true
+  copyright_since: 2019
+  site_owner: "SFZTools Organization"
+  social:
+  - icon: "fontawesome/brands/github"
+    link: "https://github.com/sfztools/sfizz"
+    name: "sfizz on GitHub"
+
+nav:
+- "index.md"
+- Developer notes:
+  - "Filters.md"
+  - "Resampling.md"
+  - "OBS-builds.md"
+  - "Rolling-out-new-versions.md"
+  - "To-deprecate-on-next-API-ABI-break.md"
+- Analysis:
+  - "Effect-routing.md"
+  - "Effects.md"
+  - "Curves.md"
+  - "EQ-and-filters.md"
+- Project Perspective / WIP:
+  - "Ideas-for-longer-term.md"
+  - "UI-themes.md"

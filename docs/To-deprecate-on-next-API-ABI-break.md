@@ -1,0 +1,1 @@
+- The API is inconsistent between C++ and C; the `renderBlock` method in C++ uses `numOutputs` as the number of stereo channels, whereas the equivalent C method actually uses the number of mono channels. The order of parameters is also inconsistent.
