@@ -31,14 +31,16 @@ markdown_extensions:
 
 theme:
   name: "material"
-  logo_dark_mode: "assets/images/logo-dark-mode.svg"
-  logo_light_mode: "assets/images/logo-light-mode.svg"
-  favicon: "assets/icons/favicon.ico"
+  custom_dir: overrides
+  font: false
+# favicon: "assets/icons/favicon.ico"
   icon:
     repo: "fontawesome/brands/github"
     edit: "material/pencil"
     view: "material/eye"
-  font: false
+  logo: "assets/images/logo-dark-mode.svg"
+# logo_dark_mode:  "assets/images/logo-dark-mode.svg"
+# logo_light_mode: "assets/images/logo-light-mode.svg"
   palette:
   # Palette toggle for light mode
   - media: "(prefers-color-scheme: light)"

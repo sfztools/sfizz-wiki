@@ -1,11 +1,21 @@
 /* GitHub override style for MKDocs Material Theme (WIP) */
 
+/*
+This in case of 1 icon with 1 color to invert for a light and dark backgrounds
+(thank you Takase!)
+#icon {
+  fill: var(--md-icon-color);
+}
+*/
+/*
+These are in case of different/more colored icons
 #logo_light_mode {
     display: var(--md-footer-logo-light-mode);
 }
 #logo_dark_mode {
     display: var(--md-footer-logo-dark-mode);
 }
+*/
 /* Light mode */
 [data-md-color-scheme="default"] {
   --md-primary-fg-color: #16171d; /* Header background (fg?) */
@@ -13,8 +23,10 @@
   --md-default-bg-color: #ffffff; /* Main background */
   --md-typeset-a-color:  #58a6ff; /* Link */
   --md-accent-fg-color:  #58a6ff; /* Link Hover */
+/*
   --md-footer-logo-dark-mode:  none;
   --md-footer-logo-light-mode: block;
+*/
 }
 /* Dark mode */
 [data-md-color-scheme="slate"] {
@@ -23,6 +35,8 @@
   --md-default-bg-color: #0d1117; /* Main background */
   --md-typeset-a-color:  #58a6ff; /* Link */
   --md-accent-fg-color:  #58a6ff; /* Link Hover */
+/*
   --md-footer-logo-dark-mode:  block;
   --md-footer-logo-light-mode: none;
+*/
 }
