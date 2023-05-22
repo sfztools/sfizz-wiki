@@ -707,9 +707,11 @@
 
 
 <h1 id="open-build-service">Open Build Service</h1>
-<p>Links to current build channels:
-- stable: <a href="https://build.opensuse.org/package/show/home:sfztools:sfizz/sfizz">https://build.opensuse.org/package/show/home:sfztools:sfizz/sfizz</a>
-- develop: <a href="https://build.opensuse.org/package/show/home:sfztools:sfizz:develop/sfizz">https://build.opensuse.org/package/show/home:sfztools:sfizz:develop/sfizz</a></p>
+<p>Links to current build channels:</p>
+<ul>
+<li><a href="https://build.opensuse.org/package/show/home:sfztools:sfizz/sfizz">stable</a></li>
+<li><a href="https://build.opensuse.org/package/show/home:sfztools:sfizz:develop/sfizz">develop</a></li>
+</ul>
 <h2 id="maintaining-the-builds">Maintaining the builds</h2>
 <p>There are package builds by distribution which are organized as follows:</p>
 <ul>
@@ -725,18 +727,20 @@
 </ul>
 <p>The <code>sfizz</code> package contains the LV2 and JACK programs. They are statically linked, so they do not have a dependency to <code>libsfizz0</code>.</p>
 <p>From OBS documentation, it's not clarified how to make Debian package splits.
-This is accomplished by specifying multiple <code>Package</code> entries in <code>debian.control</code>, and listing them again in the <code>Binary</code> field of <code>sfizz.dsc</code>.</p>
+This is accomplished by specifying multiple <code>Package</code> entries in <code>debian.control</code>,
+and listing them again in the <code>Binary</code> field of <code>sfizz.dsc</code>.</p>
 <h3 id="the-service">The service</h3>
 <p>The OBS packages contain a <code>_service</code> file at the root.</p>
 <p>The goal of this file is to tell the builder to perform a series of operations before starting to build.
 The purpose can be to download the remote source archive, or to set the version of the package which is built.</p>
 <ul>
-<li><a href="https://github.com/openSUSE/obs-service-tar_scm/blob/master/tar_scm.service.in">tar_scm</a>: This clones the git repo and packs the result into a tarball, which makes it a source file of the build.
-   (this service is marked obsolete, but some target platforms don't allow the newer, so it's kept back on purpose)</li>
-<li><a href="https://github.com/openSUSE/obs-service-recompress/blob/master/recompress.service">recompress</a>: Applies compression on the created tarball to turn it into <code>tar.gz</code> or other</li>
-<li><a href="https://github.com/openSUSE/open-build-service/blob/master/src/api/test/fixtures/backend/services/set_version.service">set_version</a>: Sets version in the package build files. The version number can be explicit, otherwise it can be created based on the git revision.</li>
+<li><a href="https://github.com/openSUSE/obs-service-tar_scm/blob/master/tar_scm.service.in">tar_scm</a>:      This clones the git repo and packs the result into a tarball, which makes it a source file of the build.
+                  (this service is marked obsolete, but some target platforms don't allow the newer, so it's kept back on purpose)</li>
+<li><a href="https://github.com/openSUSE/obs-service-recompress/blob/master/recompress.service">recompress</a>:   Applies compression on the created tarball to turn it into <code>tar.gz</code> or other</li>
+<li><a href="https://github.com/openSUSE/open-build-service/blob/master/src/api/test/fixtures/backend/services/set_version.service">set_version</a>:  Sets version in the package build files. The version number can be explicit,
+                  otherwise it can be created based on the git revision.</li>
 <li><a href="https://github.com/openSUSE/open-build-service/blob/master/src/api/test/fixtures/backend/services/download_url.service">download_url</a>: Download a source file based on URL, and keep it in cache.</li>
-<li><a href="https://github.com/hiberis/obs-service-verify_file/blob/master/verify_file.service">verify_file</a>: Apply a check based on hash to the downloaded file.</li>
+<li>[verify_file]:  Apply a check based on hash to the downloaded file.</li>
 </ul>
 <p>Note: when committing, I can be required to install some OBS services on the local machine.
 At least on Arch, they are available in AUR as packages <code>obs-service-*</code>.</p>
@@ -745,21 +749,21 @@ At least on Arch, they are available in AUR as packages <code>obs-service-*</cod
 <h3 id="updating-the-stable-channel">Updating the stable channel</h3>
 <p>The stable channel contains a <code>_service</code> file that applies a version number automatically into the build files.
 To update, it's only needed to edit the <code>_service</code> file and none other.</p>
-<p>This is the example service of <code>sfizz 0.3.0</code>.
-To update it's just needed to change the version <code>0.3.0</code> everywhere and update the file checksum.</p>
+<p>This is the example service of <code>sfizz 1.2.1</code>.
+To update it's just needed to change the version <code>1.2.1</code> everywhere and update the file checksum.</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">&lt;services&gt;</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="w">  </span><span class="nt">&lt;service</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;set_version&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;version&quot;</span><span class="nt">&gt;</span>0.3.0<span class="nt">&lt;/param&gt;</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="w">    </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;version&quot;</span><span class="nt">&gt;</span>1.2.1<span class="nt">&lt;/param&gt;</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">&lt;/service&gt;</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nt">&lt;service</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;download_url&quot;</span><span class="nt">&gt;</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;protocol&quot;</span><span class="nt">&gt;</span>https<span class="nt">&lt;/param&gt;</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;host&quot;</span><span class="nt">&gt;</span>github.com<span class="nt">&lt;/param&gt;</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;path&quot;</span><span class="nt">&gt;</span>sfztools/sfizz/releases/download/0.3.0/sfizz-0.3.0-src.tar.gz<span class="nt">&lt;/param&gt;</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;path&quot;</span><span class="nt">&gt;</span>sfztools/sfizz/releases/download/1.2.1/sfizz-1.2.1.tar.gz<span class="nt">&lt;/param&gt;</span>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nt">&lt;/service&gt;</span>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="nt">&lt;service</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;verify_file&quot;</span><span class="nt">&gt;</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;file&quot;</span><span class="nt">&gt;</span>_service:download_url:sfizz-0.3.0-src.tar.gz<span class="nt">&lt;/param&gt;</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;file&quot;</span><span class="nt">&gt;</span>_service:download_url:sfizz-1.2.1.tar.gz<span class="nt">&lt;/param&gt;</span>
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;verifier&quot;</span><span class="nt">&gt;</span>sha256<span class="nt">&lt;/param&gt;</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;checksum&quot;</span><span class="nt">&gt;</span>3ba24c1ca468391b6d2b209c712ea0d5032b7aeaf977f271d06681ce207d95bb<span class="nt">&lt;/param&gt;</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">    </span><span class="nt">&lt;param</span><span class="w"> </span><span class="na">name=</span><span class="s">&quot;checksum&quot;</span><span class="nt">&gt;</span>5a4af23b2a4f1646aaa208d1e71adcf1e706dd6375c4e898b6e49592d85ac298<span class="nt">&lt;/param&gt;</span>
 <a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="nt">&lt;/service&gt;</span>
 <a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="nt">&lt;/services&gt;</span>
 </code></pre></div>
