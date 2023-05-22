@@ -1,8 +1,8 @@
 # Open Build Service
 
 Links to current build channels:
-- stable: https://build.opensuse.org/package/show/home:sfztools:sfizz/sfizz
-- develop: https://build.opensuse.org/package/show/home:sfztools:sfizz:develop/sfizz
+- stable: <https://build.opensuse.org/package/show/home:sfztools:sfizz/sfizz>
+- develop: <https://build.opensuse.org/package/show/home:sfztools:sfizz:develop/sfizz>
 
 ## Maintaining the builds
 
@@ -15,6 +15,7 @@ There are package builds by distribution which are organized as follows:
 This organization is mostly explained in the OBS user manual.
 
 Depend on the target distribution, the package is splitted into multiple subpackages.
+
 - RPM: `sfizz`, `libsfizz0`, `libsfizz0-devel`
 - DEB: `sfizz`, `libsfizz0`, `libsfizz0-dev`
 
@@ -52,7 +53,7 @@ To update, it's only needed to edit the `_service` file and none other.
 This is the example service of `sfizz 0.3.0`.
 To update it's just needed to change the version `0.3.0` everywhere and update the file checksum.
 
-```
+```xml
 <services>
   <service name="set_version">
     <param name="version">0.3.0</param>
