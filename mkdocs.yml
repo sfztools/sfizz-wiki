@@ -16,11 +16,34 @@ extra:
   site_owner: "SFZTools Organization"
   social:
   - icon: "fontawesome/brands/github"
-    link: "https://github.com/sfztools/sfizz"
+    link: "https://github.com/sfztools/sfizz/"
     name: "sfizz on GitHub"
 
+  - icon: "fontawesome/solid/hashtag"
+    link: "https://kiwiirc.com/nextclient/#irc://irc.libera.chat:+6697/#sfztools"
+    name: "sfizz on IRC"
+
+  - icon: "fontawesome/brands/discord"
+    link: "https://discord.gg/3ArE9Mw"
+    name: "sfizz on Discord"
+
+  - icon: "fontawesome/solid/at"
+    link: "https://sfz.tools/sfizz-wiki/contacts"
+    name: "EMail"
+
+  - icon: "fontawesome/solid/rss"
+    link: "https://sfz.tools/atom.xml"
+    name: "News Atom Feed"
+
 nav:
+- External Links:
+  - "SFZ Format": "https://sfzformat.com/"
+  - "SFZ Instruments": "https://github.com/sfzinstruments/"
+  - "FreePats Instruments": "https://freepats.zenvoid.org/"
+  - "LinuxAudio": "https://linuxaudio.org/"
+  - "LinuxMAO": "https://linuxmao.org/"
 - "index.md"
+- "contacts.md"
 - Developer notes:
   - "Filters.md"
   - "Resampling.md"
